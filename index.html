@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Row Click Modal</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Click on a Table Row</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-toggle="modal" data-target="#myModal" data-id="1" data-name="Rohit" data-age="23">
+                <td>1</td>
+                <td>Rohit</td>
+                <td>23</td>
+            </tr>
+            <tr data-toggle="modal" data-target="#myModal" data-id="2" data-name="Rohit Jha" data-age="25">
+                <td>2</td>
+                <td>Rohit jha</td>
+                <td>25</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Row Details</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <p>ID: <span id="modal-id"></span></p>
+                <p>Name: <span id="modal-name"></span></p>
+                <p>Age: <span id="modal-age"></span></p>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- jQuery and Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    $('table tbody tr').on('click', function(){
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        var age = $(this).data('age');
+
+        $('#modal-id').text(id);
+        $('#modal-name').text(name);
+        $('#modal-age').text(age);
+    });
+});
+</script>
+
+</body>
+</html>
